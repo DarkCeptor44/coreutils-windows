@@ -1,0 +1,16 @@
+[workspace]
+resolver = "3"
+members = []
+
+[workspace.package]
+edition = "2024"
+rust-version = "1.85"
+authors = ["DarkCeptor44"]
+license = "MPL-2.0"
+repository = "https://github.com/DarkCeptor44/coreutils-windows"
+
+[workspace.dependencies]
+
+[workspace.lints.rust]
+
+[workspace.lints.clippy]
