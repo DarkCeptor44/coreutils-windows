@@ -1,6 +1,6 @@
 [workspace]
 resolver = "3"
-members = []
+members = ["which"]
 
 [workspace.package]
 edition = "2024"
@@ -10,7 +10,43 @@ license = "MPL-2.0"
 repository = "https://github.com/DarkCeptor44/coreutils-windows"
 
 [workspace.dependencies]
+anyhow = "1.0.104"
+clap = "4.6.7"
+colored = "3.1.1"
+divan = "0.1.21"
+is_executable = "1.0.6"
+rayon = "1.12.0"
+tempfile = "3.27.0"
+thiserror = "2.0.21"
 
 [workspace.lints.rust]
+unsafe_code = "forbid"
+missing_debug_implementations = "deny"
 
 [workspace.lints.clippy]
+pedantic = { level = "warn", priority = -1 }
+
+[profile.dev]
+codegen-units = 16
+debug = true
+incremental = true
+lto = false
+
+[profile.test]
+debug = true
+codegen-units = 16
+incremental = true
+lto = false
+
+[profile.release]
+lto = true
+codegen-units = 1
+opt-level = 3
+strip = true
+panic = "abort"
+incremental = false
+
+[profile.fast]
+inherits = "release"
+lto = false
+incremental = true

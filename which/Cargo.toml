@@ -1,0 +1,38 @@
+[package]
+name = "which"
+version = "0.1.0"
+description = "Locate executables in PATH across platforms"
+edition.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+anyhow.workspace = true
+clap = { workspace = true, features = ["derive"], optional = true }
+colored = { workspace = true, optional = true }
+is_executable.workspace = true
+rayon.workspace = true
+thiserror.workspace = true
+
+[dev-dependencies]
+divan.workspace = true
+tempfile.workspace = true
+
+[features]
+default = ["cli"]
+cli = ["dep:clap", "dep:colored"]
+
+[[bin]]
+name = "which"
+path = "src/main.rs"
+required-features = ["cli"]
+doc = false
+
+[[bench]]
+name = "which"
+harness = false
+
+[lints]
+workspace = true
