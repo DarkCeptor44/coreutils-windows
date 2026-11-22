@@ -38,9 +38,7 @@ The minimum supported Rust version is:
 ## Usage Example
 
 ```rust
-use which::which;
-
-let found = which("python").unwrap();
+let found = which::which("python").unwrap();
 // returns ["path/to/python.exe", "path/to/python3.exe"]
 ```
 
@@ -50,12 +48,21 @@ let found = which("python").unwrap();
 
 ```text
 Timer precision: 100 ns
-which     fastest       │ slowest       │ median        │ mean          │ samples │ iters
-╰─ which                │               │               │               │         │
-   ├─ t=1  1.57 ms       │ 2.867 ms      │ 1.773 ms      │ 1.845 ms      │ 100     │ 100
-   ├─ t=4  6.349 ms      │ 9.727 ms      │ 6.78 ms       │ 6.972 ms      │ 100     │ 100
-   ├─ t=8  12.58 ms      │ 14.76 ms      │ 13.39 ms      │ 13.66 ms      │ 104     │ 104
-   ╰─ t=16  25.26 ms      │ 29.35 ms      │ 27.14 ms      │ 27.47 ms      │ 112     │ 112
+which                fastest       │ slowest       │ median        │ mean          │ samples │ iters
+├─ which                           │               │               │               │         │
+│  ├─ t=1            1.664 ms      │ 3.346 ms      │ 1.946 ms      │ 2.009 ms      │ 100     │ 100
+│  ├─ t=4            6.852 ms      │ 10.48 ms      │ 7.561 ms      │ 7.738 ms      │ 100     │ 100
+│  ├─ t=8            13.69 ms      │ 15.24 ms      │ 14.41 ms      │ 14.47 ms      │ 104     │ 104
+│  ╰─ t=16           26.44 ms      │ 30.21 ms      │ 28.01 ms      │ 28.21 ms      │ 112     │ 112
+╰─ which_from_paths                │               │               │               │         │
+   ├─ t=1            177.2 µs      │ 431.7 µs      │ 229.4 µs      │ 236.8 µs      │ 100     │ 100
+   │                 11.28 Kitem/s │ 4.631 Kitem/s │ 8.714 Kitem/s │ 8.443 Kitem/s │         │
+   ├─ t=4            610.9 µs      │ 1.607 ms      │ 738.1 µs      │ 791.2 µs      │ 100     │ 100
+   │                 3.273 Kitem/s │ 1.244 Kitem/s │ 2.709 Kitem/s │ 2.527 Kitem/s │         │
+   ├─ t=8            617.2 µs      │ 1.615 ms      │ 1.227 ms      │ 1.248 ms      │ 104     │ 104
+   │                 3.239 Kitem/s │ 1.237 Kitem/s │ 1.629 Kitem/s │ 1.601 Kitem/s │         │
+   ╰─ t=16           1.034 ms      │ 2.886 ms      │ 2.643 ms      │ 2.578 ms      │ 112     │ 112
+                     1.932 Kitem/s │ 692.8 item/s  │ 756.5 item/s  │ 775.5 item/s  │         │
 ```
 
 ## Audits

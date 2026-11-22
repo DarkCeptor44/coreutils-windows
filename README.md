@@ -5,7 +5,7 @@ Rust coreutils CLIs for Windows first.
 ## Audits
 
 | Auditor | Audit Date | Vulnerabilities |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | [cargo-audit](https://crates.io/crates/cargo-audit) | 2026-11-22 | 0 |
 
 ## License
