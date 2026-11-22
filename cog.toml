@@ -1,7 +1,6 @@
 from_latest_tag = true
 ignore_merge_commits = true
 skip_untracked = true
-tag_prefix = "v"
 
 [commit_types]
 feat = { changelog_title = "Features" }
@@ -22,3 +21,9 @@ authors = [{ signature = "Murilo Pagliuso", username = "DarkCeptor44" }]
 
 [bump_profiles.default]
 pre_bump_hooks = ["cargo test", "cargo clippy", "cargo fmt --check"]
+
+[monorepo]
+resolver = "Cargo"
+
+[monorepo.packages.which]
+path = "which"
