@@ -42,9 +42,21 @@ let found = which::which("python").unwrap();
 // returns ["path/to/python.exe", "path/to/python3.exe"]
 ```
 
-## Benchmarks
+## CLI Benchmarks
 
 - **Machine:** Ryzen 7 3800X, RTX 2070 Super, 32GB DDR4 RAM
+- **Command:**:
+
+    ```bash
+    hyperfine --warmup 10 "where python" --command-name "Windows where" "which python" --command-name "this which" --export-markdown=windows.md
+    ```
+
+| Command | Mean Wall Time [ms] | Change | Factor |
+| --- | --- | --- | --- |
+| `Windows where` | 72.0 ± 2.2 | | |
+| `this which` | 20.2 ± 1.1 | -72.0% | (3.6x faster) |
+
+## Library Benchmarks
 
 ```text
 Timer precision: 100 ns
