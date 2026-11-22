@@ -11,10 +11,12 @@ repository = "https://github.com/DarkCeptor44/coreutils-windows"
 
 [workspace.dependencies]
 anyhow = "1.0.104"
+assert_cmd = "2.2.2"
 clap = "4.6.7"
 colored = "3.1.1"
 divan = "0.1.21"
 is_executable = "1.0.6"
+predicates = "3.1.4"
 rayon = "1.12.0"
 tempfile = "3.27.0"
 thiserror = "2.0.21"
