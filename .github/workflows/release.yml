@@ -41,16 +41,22 @@ jobs:
 
       - name: Generate Changelog with Cocogitto
         id: changelog
-        uses: cocogitto/cocogitto-action@v4
-        with:
-          command: changelog
-          args: --at ${{ steps.version.outputs.version }}
+        shell: bash
+        run: |
+          curl -sSfL https://github.com/cocogitto/cocogitto/releases/download/7.0.0/cocogitto-7.0.0-x86_64-unknown-linux-musl.tar.gz \
+            | tar -xz --strip-components=1 -C /usr/local/bin x86_64-unknown-linux-musl/cog
+          CHANGELOG=$(cog changelog --at "${{ steps.version.outputs.version }}")
+          {
+            echo "changelog<<EOF"
+            echo "$CHANGELOG"
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
 
       - name: Publish Github Release
         uses: softprops/action-gh-release@v3
         with:
           tag_name: ${{ steps.version.outputs.version }}
-          body: ${{ steps.changelog.outputs.stdout }}
+          body: ${{ steps.changelog.outputs.changelog }}
           draft: false
           prerelease: false
 
