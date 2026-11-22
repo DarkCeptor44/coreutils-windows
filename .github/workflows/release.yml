@@ -87,5 +87,5 @@ jobs:
         with:
           bin: ${{ needs.create-release.outputs.package }}
           target: ${{ matrix.target }}
-          archive: $bin-$tag-$target
+          archive: $tag-$target
           token: ${{ secrets.GITHUB_TOKEN }}
